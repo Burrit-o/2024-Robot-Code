@@ -64,7 +64,7 @@ public class IPFSSub extends SubsystemBase {
   }
 
   public void Shoot(double speed) {
-    TLShooterMotor.set(speed);
+    TLShooterMotor.set(-speed);
     TRShooterMotor.set(speed);
   }
   

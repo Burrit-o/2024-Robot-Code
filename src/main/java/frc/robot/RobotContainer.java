@@ -12,6 +12,7 @@ import frc.robot.commands.Feed;
 import frc.robot.commands.Shoot;
 import frc.robot.subsystems.IPFSSub;
 import frc.robot.commands.Intake;
+import frc.robot.commands.IntakeAndFeed;
 import frc.robot.commands.RunAll;
 
 /**
@@ -53,6 +54,8 @@ public class RobotContainer {
     xButton.whileTrue(new Intake(m_IPFSSub));
     Trigger rBumper = m_driverController.rightBumper();
     rBumper.whileTrue(new RunAll(m_IPFSSub));
+    Trigger bButton = m_driverController.b();
+    bButton.whileTrue(new IntakeAndFeed(m_IPFSSub));
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     /*new Trigger(m_exampleSubsystem::exampleCondition)
         .onTrue(new ExampleCommand(m_exampleSubsystem));*/

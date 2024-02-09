@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.IPFSSub;
 
-public class Intake extends Command {
+public class IntakeAndFeed extends Command {
   private final Subsystem m_subsystem;
-  /** Creates a new Intake. */
-  public Intake(IPFSSub subsystem) {
+  /** Creates a new Feed. */
+  public IntakeAndFeed(IPFSSub subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -28,12 +28,14 @@ public class Intake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    ((IPFSSub) m_subsystem).Feed(0.25);
     ((IPFSSub) m_subsystem).Intake(0.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    ((IPFSSub) m_subsystem).Feed(0);
     ((IPFSSub) m_subsystem).Intake(0);
   }
 
