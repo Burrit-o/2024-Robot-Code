@@ -28,7 +28,7 @@ public class RunAll extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    ((IPFSSub) m_subsystem).Feed(0.25);
+    ((IPFSSub) m_subsystem).Feed(0.5);
     ((IPFSSub) m_subsystem).Intake(0.5);
     ((IPFSSub) m_subsystem).Shoot(0.75);
   }

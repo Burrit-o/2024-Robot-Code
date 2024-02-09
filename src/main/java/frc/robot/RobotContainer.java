@@ -56,13 +56,6 @@ public class RobotContainer {
     rBumper.whileTrue(new RunAll(m_IPFSSub));
     Trigger bButton = m_driverController.b();
     bButton.whileTrue(new IntakeAndFeed(m_IPFSSub));
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    /*new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));*/
-
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-    // cancelling on release.
-   // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
 
   /**

@@ -10,6 +10,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.Constants.PickupConstants;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -28,13 +29,13 @@ public class IPFSSub extends SubsystemBase {
   private final RelativeEncoder BLEncoder;
   private final RelativeEncoder BREncoder;
   
-
+  private final DigitalInput IntakeSensor;
 
   /** Creates a new IPFSSub. */
   public IPFSSub() {
   TLShooterMotor = new CANSparkMax(ShooterConstants.TLShooterMotor, MotorType.kBrushless);
-  TLShooterMotor.setInverted(true);
   TRShooterMotor = new CANSparkMax(ShooterConstants.TRShooterMotor, MotorType.kBrushless);
+  TRShooterMotor.setInverted(true);
   BLShooterMotor = new CANSparkMax(ShooterConstants.BLShooterMotor, MotorType.kBrushless);
   BRShooterMotor = new CANSparkMax(ShooterConstants.BRShooterMotor, MotorType.kBrushless);
   Feeder = new CANSparkMax(PickupConstants.PFeederMotor, MotorType.kBrushless);
@@ -44,6 +45,8 @@ public class IPFSSub extends SubsystemBase {
   TREncoder = TRShooterMotor.getEncoder();
   BLEncoder = BLShooterMotor.getEncoder();
   BREncoder = BRShooterMotor.getEncoder();
+
+  IntakeSensor = new DigitalInput(1);
 
   }
 
@@ -75,6 +78,13 @@ public class IPFSSub extends SubsystemBase {
   public void Intake(double speed) {
     IntakeMotor.set(speed);
   }
+
+  public boolean haveNote() {
+    return IntakeSensor.get();
+  }
+
+  
+
     @Override
 
 
@@ -84,6 +94,7 @@ public class IPFSSub extends SubsystemBase {
     SmartDashboard.putNumber("TRSpeed", TRVelocity());
     SmartDashboard.putNumber("BLSpeed", BLVelocity());
     SmartDashboard.putNumber("BRSpeed", BRVelocity());
+    SmartDashboard.putBoolean("Intake Sensor", IntakeSensor.get());
 
   }
 }
