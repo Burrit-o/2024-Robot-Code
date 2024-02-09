@@ -79,7 +79,7 @@ public class IPFSSub extends SubsystemBase {
     IntakeMotor.set(speed);
   }
 
-  public boolean haveNote() {
+  public boolean hasNote() {
     return IntakeSensor.get();
   }
 

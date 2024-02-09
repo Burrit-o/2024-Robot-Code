@@ -44,7 +44,7 @@ public class IntakeAndFeed extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (((IPFSSub) m_subsystem).haveNote()) {
+    if (((IPFSSub) m_subsystem).hasNote()) {
       return true;
     }else{
       return false;

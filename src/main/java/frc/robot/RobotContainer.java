@@ -53,9 +53,6 @@ public class RobotContainer {
     Trigger xButton = m_driverController.x();
     xButton.whileTrue(new Intake(m_IPFSSub));
     Trigger rBumper = m_driverController.rightBumper();
-    //AutoShoot needs a trigger constraint: if BeanBrake(IntakeSensor)
-    //reads true, allow AutoShoot to run off a keybind
-    //Later this kiybind will actually be a boolean on whether we are centered on target
 
     rBumper.whileTrue(new AutoShoot(m_IPFSSub));
     //Per Mando and Christyn request:
