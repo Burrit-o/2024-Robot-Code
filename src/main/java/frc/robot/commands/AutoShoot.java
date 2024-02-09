@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.IPFSSub;
 
-public class RunAll extends Command {
+public class AutoShoot extends Command {
   private final Subsystem m_subsystem;
   /** Creates a new RunAll. */
-  public RunAll(IPFSSub subsystem) {
+  public AutoShoot(IPFSSub subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -28,16 +28,12 @@ public class RunAll extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    ((IPFSSub) m_subsystem).Feed(0.5);
-    ((IPFSSub) m_subsystem).Intake(0.5);
     ((IPFSSub) m_subsystem).Shoot(0.75);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    ((IPFSSub) m_subsystem).Feed(0);
-    ((IPFSSub) m_subsystem).Intake(0);
     ((IPFSSub) m_subsystem).Shoot(0);
   }
 

@@ -83,7 +83,6 @@ public class IPFSSub extends SubsystemBase {
     return IntakeSensor.get();
   }
 
-  
 
     @Override
 

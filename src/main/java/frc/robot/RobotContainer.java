@@ -13,7 +13,7 @@ import frc.robot.commands.Shoot;
 import frc.robot.subsystems.IPFSSub;
 import frc.robot.commands.Intake;
 import frc.robot.commands.IntakeAndFeed;
-import frc.robot.commands.RunAll;
+import frc.robot.commands.AutoShoot;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -53,9 +53,14 @@ public class RobotContainer {
     Trigger xButton = m_driverController.x();
     xButton.whileTrue(new Intake(m_IPFSSub));
     Trigger rBumper = m_driverController.rightBumper();
-    rBumper.whileTrue(new RunAll(m_IPFSSub));
-    Trigger bButton = m_driverController.b();
-    bButton.whileTrue(new IntakeAndFeed(m_IPFSSub));
+    //AutoShoot needs a trigger constraint: if BeanBrake(IntakeSensor)
+    //reads true, allow AutoShoot to run off a keybind
+    //Later this kiybind will actually be a boolean on whether we are centered on target
+
+    rBumper.whileTrue(new AutoShoot(m_IPFSSub));
+    //Per Mando and Christyn request:
+    Trigger lBumper = m_driverController.leftBumper();
+    lBumper.whileTrue(new IntakeAndFeed(m_IPFSSub));
   }
 
   /**
