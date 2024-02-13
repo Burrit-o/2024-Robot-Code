@@ -31,9 +31,9 @@ public class Shoot extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(((IPFSSub) m_subsystem).hasNote()){
-    ((IPFSSub) m_subsystem).Shoot(m_driverController.getRawAxis(3));
-    }
+    //if(((IPFSSub) m_subsystem).hasNote()){
+    //(IPFSSub) m_subsystem).Shoot(m_driverController.getRawAxis(3);
+    ((IPFSSub) m_subsystem).Shoot(m_driverController.getRightTriggerAxis());
   }
 
   // Called once the command ends or is interrupted.

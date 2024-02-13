@@ -54,7 +54,7 @@ public class RobotContainer {
     xButton.whileTrue(new Intake(m_IPFSSub));
     Trigger rBumper = m_driverController.rightBumper();
 
-    rBumper.whileTrue(new AutoShoot(m_IPFSSub));
+   // rBumper.whileTrue(new AutoShoot(m_IPFSSub));
     //Per Mando and Christyn request:
     Trigger lBumper = m_driverController.leftBumper();
     lBumper.whileTrue(new IntakeAndFeed(m_IPFSSub));

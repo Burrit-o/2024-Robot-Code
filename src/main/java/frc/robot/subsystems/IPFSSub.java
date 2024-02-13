@@ -35,7 +35,7 @@ public class IPFSSub extends SubsystemBase {
   public IPFSSub() {
   TLShooterMotor = new CANSparkMax(ShooterConstants.TLShooterMotor, MotorType.kBrushless);
   TRShooterMotor = new CANSparkMax(ShooterConstants.TRShooterMotor, MotorType.kBrushless);
-  TRShooterMotor.setInverted(true);
+  TLShooterMotor.setInverted(true);
   BLShooterMotor = new CANSparkMax(ShooterConstants.BLShooterMotor, MotorType.kBrushless);
   BRShooterMotor = new CANSparkMax(ShooterConstants.BRShooterMotor, MotorType.kBrushless);
   Feeder = new CANSparkMax(PickupConstants.PFeederMotor, MotorType.kBrushless);
@@ -68,7 +68,7 @@ public class IPFSSub extends SubsystemBase {
 
   public void Shoot(double speed) {
     TLShooterMotor.set(-speed);
-    TRShooterMotor.set(speed);
+    TRShooterMotor.set(-speed);
   }
   
   public void Feed(double speed) {
@@ -94,6 +94,7 @@ public class IPFSSub extends SubsystemBase {
     SmartDashboard.putNumber("BLSpeed", BLVelocity());
     SmartDashboard.putNumber("BRSpeed", BRVelocity());
     SmartDashboard.putBoolean("Intake Sensor", IntakeSensor.get());
+    SmartDashboard.putNumber("Feeder", Feeder.get());
 
   }
 }
